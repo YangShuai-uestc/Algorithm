@@ -1,6 +1,3 @@
-package com.yangshuai;
-
-
 import java.util.Arrays;
 
 public class Main {
@@ -77,23 +74,6 @@ public class Main {
             //递归排序右数组
             mergeSort(a, mid + 1, end);
             merge(a, start, mid, end);
-        }
-    }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-
-        @Override
-        public String toString() {
-            return "ListNode{" +
-                    "val=" + val +
-                    ", next=" + next +
-                    '}';
         }
     }
 }
