@@ -6,7 +6,7 @@ public class Main {
         int[] test = new int[max];
 
         for (int i = 0; i < max; i++) {
-            test[i] = (int) (Math.random() * max);
+            test[i] = (int) (Math.random() * max * 10);
         }
 
         //排序开始时间
@@ -31,7 +31,7 @@ public class Main {
      * @param right
      * @return 有序数组
      */
-    public static int[] merge(int[] a, int[] arrayTemp, int left, int mid, int right) {
+    public static void merge(int[] a, int[] arrayTemp, int left, int mid, int right) {
         //左检测指针
         int p1 = left;
         //右检测指针
@@ -64,8 +64,6 @@ public class Main {
         }
 
         System.arraycopy(arrayTemp, left, a, left, right - left + 1);
-
-        return a;
     }
 
     /**
@@ -84,10 +82,8 @@ public class Main {
             mergeSort(a, arrayTemp, start, mid);
             //递归排序右数组，使之有序
             mergeSort(a, arrayTemp, mid + 1, end);
-            //临时存放数据的数组
-            int[] temp = new int[a.length];
-
-            merge(a, temp, start, mid, end);
+            //合并左右的有序子数组
+            merge(a, arrayTemp, start, mid, end);
         }
     }
 }
