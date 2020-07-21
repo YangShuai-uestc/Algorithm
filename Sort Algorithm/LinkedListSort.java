@@ -1,7 +1,7 @@
 package com.yangshuai;
 
 
-public class SortLinkedList {
+public class LinkedListSort {
 
     public static void main(String[] args) {
         // write your code here
