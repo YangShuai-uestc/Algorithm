@@ -42,7 +42,8 @@ public class LinkedListSort {
         ListNode middle = findListMiddle(head);
         //右半部分的链表头
         ListNode rightHead = middle.next;
-        middle.next = null;//!!!!!!非常重要，否则就会一直递归下去无法终止
+        //!!!!!!非常重要，否则就会一直递归下去无法终止
+        middle.next = null;
 
         //递归操作左右半链表
         ListNode left = sortList(head);
