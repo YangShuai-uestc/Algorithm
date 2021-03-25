@@ -25,6 +25,27 @@ public class MergeSort {
     }
 
     /**
+     * 归并排序
+     *
+     * @param a         待排序数组
+     * @param arrayTemp 临时存放数据的空间
+     * @param start     排序起点元素
+     * @param end       排序终点元素
+     */
+    public static void mergeSort(int[] a, int[] arrayTemp, int start, int end) {
+        if (start < end) {
+            //划分子数组
+            int mid = (start + end) / 2;
+            //递归排序左数组，使之有序
+            mergeSort(a, arrayTemp, start, mid);
+            //递归排序右数组，使之有序
+            mergeSort(a, arrayTemp, mid + 1, end);
+            //合并左右的有序子数组
+            merge(a, arrayTemp, start, mid, end);
+        }
+    }
+
+    /**
      * 有序数组的排序
      *
      * @param a         前半段和后半段为两个有序数组
@@ -66,26 +87,5 @@ public class MergeSort {
         }
 
         System.arraycopy(arrayTemp, left, a, left, right - left + 1);
-    }
-
-    /**
-     * 归并排序
-     *
-     * @param a         待排序数组
-     * @param arrayTemp 临时存放数据的空间
-     * @param start     排序起点元素
-     * @param end       排序终点元素
-     */
-    public static void mergeSort(int[] a, int[] arrayTemp, int start, int end) {
-        if (start < end) {
-            //划分子数组
-            int mid = (start + end) / 2;
-            //递归排序左数组，使之有序
-            mergeSort(a, arrayTemp, start, mid);
-            //递归排序右数组，使之有序
-            mergeSort(a, arrayTemp, mid + 1, end);
-            //合并左右的有序子数组
-            merge(a, arrayTemp, start, mid, end);
-        }
     }
 }

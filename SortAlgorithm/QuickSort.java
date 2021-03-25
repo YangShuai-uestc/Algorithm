@@ -15,7 +15,7 @@ public class QuickSort {
     /**
      * 快排（填坑法）
      */
-    private static void quickSort(int[] array, int left, int right) {
+    static void quickSort(int[] array, int left, int right) {
         //如果left==right表示只有一个数，则就是有序的
         if (left < right) {
             //最开始的左右边界，接下来的递归要用
@@ -42,6 +42,31 @@ public class QuickSort {
             //递归排序基准左右两个数组
             quickSort(array, l, left - 1);
             quickSort(array, right + 1, r);
+        }
+    }
+
+    void quickSort2(int[] nums, int left, int right) {
+        //如果left==right则已经有序
+        if (left < right) {
+            int l = left;
+            int r = right;
+            //基准值
+            int pivot = nums[right];
+            while (left < right) {
+                while (left < right && nums[left] <= pivot) {
+                    left++;
+                }
+                //填坑
+                nums[right] = nums[left];
+                while (left < right && nums[right] >= pivot) {
+                    right--;
+                }
+                nums[left] = nums[right];
+            }
+            //left==right
+            nums[left] = pivot;
+            quickSort(nums, l, left - 1);
+            quickSort(nums, right + 1, r);
         }
     }
 }
