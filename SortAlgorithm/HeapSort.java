@@ -21,12 +21,12 @@ public class HeapSort {
         //1.构建大顶堆
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
             //从第一个非叶子结点从下至上，从右至左调整结构
-            adjustHeap(arr, i, arr.length);
+            adjustMaxHeap(arr, i, arr.length);
         }
         //2.调整堆结构+交换堆顶元素与末尾元素
         for (int j = arr.length - 1; j > 0; j--) {
             swap(arr, 0, j);//将堆顶元素与末尾元素进行交换
-            adjustHeap(arr, 0, j);//重新对堆进行调整
+            adjustMaxHeap(arr, 0, j);//重新对堆进行调整
         }
 
     }
@@ -38,7 +38,7 @@ public class HeapSort {
      * @param parent 当前父节点
      * @param length 大顶堆的最大范围
      */
-    static void adjustHeap(int[] arr, int parent, int length) {
+    static void adjustMaxHeap(int[] arr, int parent, int length) {
         int temp = arr[parent];//先取出当前元素i
         for (int child = parent * 2 + 1; child < length; child = child * 2 + 1) {//从i结点的左子结点开始，也就是2i+1处开始
             if (child + 1 < length && arr[child] < arr[child + 1]) {//如果左子结点小于右子结点，k指向右子结点
